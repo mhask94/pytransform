@@ -1,6 +1,6 @@
 import numpy as np
-from pytransform.quaternion import *
-from pytransform.common import *
+from .quaternion import *
+from .common import *
 
 I_3x3 = np.eye(3)
 

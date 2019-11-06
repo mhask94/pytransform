@@ -1,4 +1,4 @@
-from pytransform.common import *
+from .common import *
 
 
 __qmat_matrix__ = np.array([[[1.0, 0, 0, 0],
