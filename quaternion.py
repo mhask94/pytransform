@@ -1,4 +1,4 @@
-from common import *
+from pytransform.common import *
 
 
 __qmat_matrix__ = np.array([[[1.0, 0, 0, 0],
@@ -258,10 +258,10 @@ class Quaternion():
         st = np.sin(pitch / 2.0)
         ss = np.sin(yaw / 2.0)
 
-        return Quaternion(np.array([[cp * ct * cs - sp * st * ss],
-                                    [sp * st * cs + cp * ct * ss],
-                                    [sp * ct * cs + cp * st * ss],
-                                    [cp * st * cs - sp * ct * ss]]))
+        return Quaternion(np.array([[cp * ct * cs + sp * st * ss],
+                                    [sp * ct * cs - cp * st * ss],
+                                    [cp * st * cs + sp * ct * ss],
+                                    [cp * ct * ss - sp * st * cs]]))
 
     def otimes(self, q):
         q_new = Quaternion(__qmat_matrix__.dot(q.arr).squeeze().dot(self.arr).copy())
