@@ -1,4 +1,4 @@
-from .common import *
+from common import *
 
 
 __qmat_matrix__ = np.array([[[1.0, 0, 0, 0],
@@ -341,6 +341,11 @@ if __name__ == '__main__':
         assert norm(qR.rota(v) - R.T.dot(v)) < 1e-8
 
         assert norm((q * q.inverse).elements - np.array([[1., 0, 0, 0]]).T) < 1e-8
+
+        # Check from_euler
+        euler = q.euler
+        q_euler = Quaternion.from_euler(*euler.flatten())
+        assert norm(q - q_euler) < 1e-8
 
         # Check that qexp is right by comparing with rotation matrix qexp and axis-angle
         import scipy.linalg
